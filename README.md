@@ -1,12 +1,12 @@
-# LangGraph Competitive Footfall Insights
+# LangGraph Competitive Location Insights
 
 ## Overview
 
 Businesses operating in highly competitive retail locations need timely insights into nearby competitors, customer traffic patterns, and peak business hours.
 
-This project implements a Multi-Agent AI System using LangGraph and LangChain that helps users identify nearby clothing store competitors, analyze footfall trends, evaluate peak customer hours, and generate actionable business intelligence reports.
+This project demonstrates a multi-agent workflow using LangGraph and LangChain to identify nearby clothing-store competitors, calculate a location-based proxy score from nearby mapped amenities, and generate structured competitor research reports. The score is a geographic proxy, not a measurement of customer visits or actual store footfall.
 
-The system combines Large Language Models (LLMs), web search capabilities, geospatial analysis, and agent-based orchestration to provide competitive market insights.
+The workflow combines Large Language Models (LLMs), web search capabilities, OpenStreetMap-based geospatial data, and agent orchestration to support location-based competitor research. Results depend on the coverage and quality of the available map and search data.
 
 ---
 
@@ -17,8 +17,8 @@ Businesses in competitive retail locations often struggle to monitor market riva
 Clothing stores located in busy commercial areas face intense competition and require:
 
 - Visibility into nearby competitors
-- Footfall trend analysis
-- Peak operating hours
+- Location-based competitor discovery
+- Nearby-amenity proxy scoring
 - Competitive benchmarking
 - Location-based market intelligence
 
@@ -32,12 +32,12 @@ This project addresses these challenges through an AI-powered conversational ana
 
 - Identify nearby competitors
 - Understand market saturation
-- Analyze customer traffic patterns
+- Compare stores using the project's nearby-amenity proxy score
 - Improve operational planning
 
 ### Marketing & Strategy Teams
 
-- Optimize promotions during high-traffic periods
+- Use competitor research to inform local marketing questions; actual traffic patterns require a separate reliable data source
 - Benchmark competitor activity
 - Improve local engagement campaigns
 
@@ -87,8 +87,8 @@ OutputAgent
 
 #### AnalyticsAgent
 
-- Calculates footfall metrics
-- Identifies top-performing stores
+- Calculates a nearby-amenity proxy score for each store
+- Ranks stores by that proxy score
 - Generates statistical summaries
 - Performs location-based filtering
 
@@ -124,8 +124,8 @@ OutputAgent
 
 - Multi-Agent Workflow using LangGraph
 - Competitor Discovery
-- Footfall Analysis
-- Peak Traffic Identification
+- Nearby-Amenity Proxy Scoring
+- Competitor Location Analysis
 - Report Generation
 - CSV Export
 - Excel Export
@@ -156,9 +156,9 @@ OutputAgent
 ### Clone Repository
 
 ```bash
-git clone https://github.com/<your-github-username>/LangGraph-Competitive-Footfall-Insights.git
+git clone https://github.com/antonypradeep54/Agent-LangGraph-Competitive-Footfall-Insights.git
 
-cd LangGraph-Competitive-Footfall-Insights
+cd Agent-LangGraph-Competitive-Footfall-Insights
 ```
 
 ### Install Dependencies
@@ -203,6 +203,12 @@ C13_M4_L9_Project_LangGraph_Competitive_Footfall_Insights.ipynb
 ---
 
 
+## Data Sources, Validation, and Limitations
+
+The notebook uses mapped clothing-store locations and counts nearby mapped amenities within a buffer to calculate a `footfall_score`. This is a **proxy score based on geographic context**, not observed customer counts, measured footfall, or verified peak-hour traffic. The current workflow does not establish actual visitor volumes or busiest hours.
+
+OpenStreetMap coverage may be incomplete or uneven, and the proxy score depends on the mapped features available for the selected area. The Critic Agent checks for missing values and potential anomalies; it does not independently verify the real-world accuracy of the underlying data. Validate important findings against reliable local sources before using them for business decisions.
+
 ## Future Enhancements
 
 - Real-time footfall APIs
@@ -218,7 +224,7 @@ C13_M4_L9_Project_LangGraph_Competitive_Footfall_Insights.ipynb
 
 - LangGraph Agent Orchestration
 - Multi-Agent System Design
-- Geospatial Analytics
+- Geospatial Analytics and Proxy-Score Design
 - LLM Tool Integration
 - Data Validation Pipelines
 - Business Intelligence Automation
